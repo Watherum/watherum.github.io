@@ -1,0 +1,89 @@
+<!-- HEADER -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Watherum Elite</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/elite.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="js/elite.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/logos/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/logos/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/logos/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/logos/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/logos/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logos/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/logos/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/logos/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/logos/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/logos/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png">
+    <link rel="manifest" href="/images/logos/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body class="grey" id="body">
+<!-- MAIN CONTENT -->
+<script>
+    document.getElementById("body")
+        .appendChild(createNavBar(false));
+
+    document.getElementById("body")
+        .appendChild(createPageHeader("Watherum Elite", "Join the Ranks of the Elite"));
+</script>
+
+<div id="slideshow" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+        <li data-target="#slideshow" data-slide-to="1"></li>
+        <li data-target="#slideshow" data-slide-to="2"></li>
+        <li data-target="#slideshow" data-slide-to="3"></li>
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="images/home/banner.jpg" alt="banner" width="1100" height="500">
+        </div>
+
+        <div class="carousel-item">
+            <img src="images/home/smash_victory.png" alt="smash_bros" width="1100" height="500">
+        </div>
+
+        <div class="carousel-item">
+            <img src="images/home/M4A1_MW.png" alt="MW_M4A1" width="1100" height="500">
+        </div>
+
+        <div class="carousel-item">
+            <img src="images/home/insurgency.png" alt="insurgency_sandstorm" width="1100" height="500">
+        </div>
+
+    </div>
+    <a class="carousel-control-prev" href="#slideshow" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#slideshow" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<script>
+    document.getElementById("body")
+        .appendChild(createFooter(false));
+</script>
+
+</body>
+</html>
