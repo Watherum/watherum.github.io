@@ -334,10 +334,10 @@ var soundAllowed = function (stream) {
         barWidth: 4,
         barHeight: 10,
         barSpacing: 7,
-        barColor: '#cafdff',
-        shadowBlur: 20,
-        shadowColor: '#ffffff',
-        font: ['12px', 'Helvetica'],
+        barColor: '#FF0000',
+        shadowBlur: 15,
+        shadowColor: '#000000',
+        font: ['18px', 'Helvetica'],
         stream: stream
     });
 
