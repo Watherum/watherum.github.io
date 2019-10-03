@@ -333,7 +333,7 @@ var soundAllowed = function (stream) {
         style: 'lounge',
         barWidth: 4,
         barHeight: 10,
-        barSpacing: 7,
+        barSpacing: 3,
         barColor: '#FF0000',
         shadowBlur: 15,
         shadowColor: '#000000',
