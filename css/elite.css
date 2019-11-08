@@ -54,6 +54,14 @@ ol {
 	color: #cc0000
 }
 
+.img {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	max-width: 60%;
+	max-height: 5%;
+	margin: 20px auto;
+}
 
 /* Style all font awesome icons */
 .fa {
