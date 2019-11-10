@@ -337,7 +337,7 @@ var soundAllowed = function (stream) {
         barColor: '#FF0000',
         shadowBlur: 15,
         shadowColor: '#000000',
-        font: ['18px', 'Helvetica'],
+        font: ['24px', 'Teko'],
         stream: stream
     });
 
