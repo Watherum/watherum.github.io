@@ -22,9 +22,6 @@
 footer {
 	margin-top: 33px;
 }
-#UpstateLogo {
-	width:40px;
-}
 .width {
 	width: 100%;
 }
@@ -61,6 +58,10 @@ ol {
 	max-width: 60%;
 	max-height: 5%;
 	margin: 20px auto;
+}
+
+.bottom-padding {
+	padding-bottom: 10%;
 }
 
 /* Style all font awesome icons */

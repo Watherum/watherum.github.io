@@ -18,6 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script src="js/elite.js"></script>
     <link rel="apple-touch-icon" sizes="57x57" href="/images/logos/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/images/logos/apple-icon-60x60.png">
@@ -46,6 +47,8 @@
     document.getElementById("body")
         .appendChild(createPageHeader("Watherum Elite", "Join the Ranks of the Elite"));
 </script>
+
+<div id="twitch-embed" class="center bottom-padding" ></div>
 
 <div id="slideshow" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
@@ -83,6 +86,21 @@
 <script>
     document.getElementById("body")
         .appendChild(createFooter(false));
+</script>
+
+<script type="text/javascript">
+    var embed = new Twitch.Embed("twitch-embed", {
+        width: "50%",
+        height: 540,
+        channel: "watherum",
+        layout: "video",
+        autoplay: false
+    });
+
+    embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+        var player = embed.getPlayer();
+        player.play();
+    });
 </script>
 
 </body>
