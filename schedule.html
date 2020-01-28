@@ -39,19 +39,26 @@
 </head>
 <body class="grey" id="body">
 
-<!--https://www.youtube.com/channel/UCO-sKNN967rchSRDtMfjkYw-->
-<!--https://www.twitch.tv/watherum-->
-
 <script>
     document.getElementById("body")
         .appendChild(createNavBar(false));
 
     document.getElementById("body")
-        .appendChild(createPageHeader("Events", "Mark the following events on your calendar!"));
+        .appendChild(createPageHeader("Streaming Schedule", "Mark the schedule on your calendar and come join the stream!"));
 
     document.getElementById("body")
-        .appendChild(createEvent("[1] Youtube Video Upload", "9/28/19","Any device with a wifi connection",
-            "Starting the long road to 1000 subscribers","https://www.youtube.com/watch?v=HU5XCHY_uaY&feature=youtu.be", "Youtube"));
+        .appendChild(createScheduleItem("Mondays", "Smash Bros - 9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
+
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Wednesdays", "Smash Bros - 9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
+
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Fridays", "Smash Bros - 9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
+
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Weekends",
+            "I may or may not stream on the weekends. Streams will be some other game, time & duration of my choosing",
+            "https://twitch.tv/Watherum", "Twitch"));
 
     document.getElementById("body")
         .appendChild(createFooter(false));

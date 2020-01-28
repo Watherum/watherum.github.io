@@ -82,6 +82,39 @@ function createEvent(title, date, location, description , link, linkName) {
 
 }
 
+function createScheduleItem(title, description , link, linkName) {
+    var scheduleDiv = document.createElement("div");
+    scheduleDiv.setAttribute("class","container text-center");
+
+    var cardDiv = document.createElement("div");
+    cardDiv.setAttribute("class","card");
+
+    var cardBody = document.createElement("div");
+    cardBody.setAttribute("class","card-body");
+
+    var h4 = document.createElement("h4");
+    h4.setAttribute("class","card-title");
+    h4.innerHTML = title;
+
+    var p = document.createElement("p");
+    p.setAttribute("class","card-text");
+    p.innerHTML = description;
+
+    var a = document.createElement("a");
+    a.setAttribute("class","event-link card-link");
+    a.setAttribute("href",link);
+    a.innerHTML = linkName;
+
+    scheduleDiv.appendChild(cardDiv);
+    cardDiv.appendChild(cardBody);
+    cardBody.appendChild(h4);
+    cardBody.appendChild(p);
+    cardBody.appendChild(a);
+
+    return scheduleDiv;
+
+}
+
 function createNavBar(subDir) {
     //Create Nav element
     var nav = document.createElement("nav");
@@ -139,16 +172,16 @@ function createNavBar(subDir) {
 
 
 
-    var eventListItem = document.createElement("li");
-    eventListItem.setAttribute("class","nav-item");
+    var scheduleListItem = document.createElement("li");
+    scheduleListItem.setAttribute("class","nav-item");
 
-    var eventA = document.createElement("a");
-    eventA.setAttribute("class","nav-link");
-    eventA.setAttribute("href","events.html");
+    var scheduleA = document.createElement("a");
+    scheduleA.setAttribute("class","nav-link");
+    scheduleA.setAttribute("href","schedule.html");
     if (subDir) {
-        eventA.setAttribute("href","../events.html");
+        scheduleA.setAttribute("href","../schedule.html");
     }
-    eventA.innerHTML = "Events";
+    scheduleA.innerHTML = "Schedule";
 
 
 
@@ -189,8 +222,8 @@ function createNavBar(subDir) {
     ul.appendChild(homeListItem);
     homeListItem.appendChild(homeA);
 
-    ul.appendChild(eventListItem);
-    eventListItem.appendChild(eventA);
+    ul.appendChild(scheduleListItem);
+    scheduleListItem.appendChild(scheduleA);
 
     ul.appendChild(mediaListItem);
     mediaListItem.appendChild(media);
