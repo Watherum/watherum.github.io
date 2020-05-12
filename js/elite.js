@@ -2,8 +2,10 @@ function createPageHeader(bigText, smallText) {
     var outerDiv = document.createElement("div");
     outerDiv.setAttribute("class", "jumbotron text-center");
     var h1 = document.createElement("h1");
+    h1.setAttribute("class", "index-title");
     h1.innerHTML = bigText;
     var h5 = document.createElement("h5");
+    h5.setAttribute("class", "index-title");
     h5.innerHTML = smallText;
     outerDiv.appendChild(h1);
     outerDiv.appendChild(h5);
@@ -15,7 +17,7 @@ function createFooter(subDir) {
     footer.setAttribute("class","text-center width");
 
     var cardDiv = document.createElement("div");
-    cardDiv.setAttribute("class","card");
+    cardDiv.setAttribute("class","footer-card white");
 
     var subDiv = document.createElement("div");
     subDiv.setAttribute("class","card-body");
@@ -93,11 +95,11 @@ function createScheduleItem(title, description , link, linkName) {
     cardBody.setAttribute("class","card-body");
 
     var h4 = document.createElement("h4");
-    h4.setAttribute("class","card-title");
+    h4.setAttribute("class","card-title white");
     h4.innerHTML = title;
 
     var p = document.createElement("p");
-    p.setAttribute("class","card-text");
+    p.setAttribute("class","card-text white");
     p.innerHTML = description;
 
     var a = document.createElement("a");
@@ -118,7 +120,7 @@ function createScheduleItem(title, description , link, linkName) {
 function createNavBar(subDir) {
     //Create Nav element
     var nav = document.createElement("nav");
-    nav.setAttribute("class","navbar navbar-expand-sm bg-dark navbar-dark fixed-top");
+    nav.setAttribute("class","navbar navbar-expand-sm fixed-top");
 
     //create nav brand
     var logoA = document.createElement("a");

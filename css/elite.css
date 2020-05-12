@@ -1,13 +1,38 @@
-.grey, body {
-	background-color: #343a40 !important; 
+/*.grey, body {*/
+/*	background-color: #343a40 !important; */
+/*}*/
+.background,body {
+	background-color: #360202 !important;
 }
+
+.index-title {
+	color: orangered;
+}
+
+li {
+	color: white;
+}
+
+.white {
+	color: white;
+}
+
 .card, .row {
-	background-color: grey !important;
+	background-color: #703838 !important;
 }
+
+.footer-card, .row {
+	background-color: #1c0d0d !important;
+}
+
+nav {
+	background-color: #1c0d0d;
+}
+
 .jumbotron {
 	margin-top: 140px;
-	background-color:grey; 
-	color: inherit;
+	background-color: #1c0d0d;
+	color: white;
 }
 .carousel-inner img {
 	width: 65%;
@@ -61,7 +86,7 @@ ol {
 }
 
 .bottom-padding {
-	padding-bottom: 10%;
+	padding-bottom: 3%;
 }
 
 /* Style all font awesome icons */
