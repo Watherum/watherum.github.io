@@ -31,7 +31,7 @@ function createFooter(subDir) {
 
     var p = document.createElement("p");
     p.setAttribute("class","card-text");
-    p.innerHTML = "Copyright &#169; 2019 Watherum Elite, All Rights Reserved";
+    p.innerHTML = "Copyright &#169; 2020 Watherum Elite, All Rights Reserved";
 
     footer.appendChild(cardDiv);
     cardDiv.appendChild(subDiv);
@@ -120,7 +120,7 @@ function createScheduleItem(title, description , link, linkName) {
 function createNavBar(subDir) {
     //Create Nav element
     var nav = document.createElement("nav");
-    nav.setAttribute("class","navbar navbar-expand-sm fixed-top");
+    nav.setAttribute("class","navbar navbar-dark navbar-expand-sm fixed-top");
 
     //create nav brand
     var logoA = document.createElement("a");
@@ -136,7 +136,7 @@ function createNavBar(subDir) {
         logoImg.setAttribute("src","../images/logos/pfa_v1.jpg");
     }
     logoImg.setAttribute("alt","logo");
-    logoImg.setAttribute("id","PathFindersAirsoftLogo");
+    logoImg.setAttribute("id","WatherumLogo");
     logoImg.setAttribute("height","120px");
     logoImg.setAttribute("width","120px");
 

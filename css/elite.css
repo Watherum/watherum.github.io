@@ -9,8 +9,8 @@
 	color: orangered;
 }
 
-li {
-	color: white;
+.nav-link {
+	color: blue !important;
 }
 
 .white {
@@ -27,6 +27,14 @@ li {
 
 nav {
 	background-color: #1c0d0d;
+}
+
+.navbar-toggler {
+	background-color: #1c0d0d !important;
+}
+
+.navbar-toggler-icon {
+	color: orangered !important;
 }
 
 .jumbotron {
