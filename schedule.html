@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Events</title>
+    <title>Schedule</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
@@ -39,7 +39,7 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body class="grey" id="body">
+<body id="body">
 
 <script>
     document.getElementById("body")
@@ -49,18 +49,18 @@
         .appendChild(createPageHeader("Streaming Schedule", "Mark the schedule on your calendar and come join the stream!"));
 
     document.getElementById("body")
-        .appendChild(createScheduleItem("Mondays", "Smash Bros - 9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
+        .appendChild(createScheduleItem("Mondays", "9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
 
     document.getElementById("body")
-        .appendChild(createScheduleItem("Wednesdays", "Smash Bros - 9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
+        .appendChild(createScheduleItem("Wednesdays", "9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
 
     document.getElementById("body")
-        .appendChild(createScheduleItem("Fridays", "Smash Bros - 9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
+        .appendChild(createScheduleItem("Fridays", "9pm to 12am EST","https://twitch.tv/Watherum", "Twitch"));
 
     document.getElementById("body")
         .appendChild(createScheduleItem("Weekends",
-            "I may or may not stream on the weekends. Streams will be some other game, time & duration of my choosing",
-            "https://twitch.tv/Watherum", "Twitch"));
+            "I may or may not stream on the weekends. Streams will generally be at some time & duration of my choosing",
+            "https://twitch.tv/Watherum/schedule", "Twitch Schedule"));
 
     document.getElementById("body")
         .appendChild(createFooter(false));

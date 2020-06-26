@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Social Media</title>
+    <title>Support</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
@@ -39,34 +39,31 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body class="grey" id="body">
+<body id="body">
 
 <script>
     document.getElementById("body")
         .appendChild(createNavBar(false));
 
     document.getElementById("body")
-        .appendChild(createPageHeader("Support the Channel & Streams!", "Thank you for your support!"));
-</script>
+        .appendChild(createPageHeader("Support the Content & Streams!", "Thank you for your support!"));
 
-<!--<div class="container">-->
-<!--<div class="embed-responsive embed-responsive-16by9">-->
-<!--<iframe src="https://www.youtube.com/embed/3f7rtsM8Q_k" class="embed-responsive-item" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-<!--</div>-->
-<!--</div>-->
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Twitch", "Subscribe, donate bits or gift subs",
+            "https://twitch.tv/Watherum", "Twitch"));
 
-<div class="container center">
-    <a href="https://www.twitch.tv/watherum"><h5>Subscribe on Twitch</h5></a>
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FFXM2EFES9RY2&currency_code=USD&source=url"><h5>Paypal</h5></a>
-    <a href="https://www.patreon.com/watherum"><h5>Patreon</h5></a>
-    <a href="https://www.subscribestar.com/watherum"><h5>Subscribe Star</h5></a>
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FFXM2EFES9RY2&currency_code=USD&source=url"><h5>Paypal</h5></a>
-</div>
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Paypal", "A direct one time donation of any amount",
+            "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FFXM2EFES9RY2&currency_code=USD&source=url", "Paypal"));
 
-<div class="container center">
-</div>
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Patreon", "Tiers are the same as Subscribe Star",
+            "https://www.patreon.com/watherum", "Patreon"));
 
-<script>
+    document.getElementById("body")
+        .appendChild(createScheduleItem("Subscribe Star", "Tiers are the same as Patreon",
+            "https://www.subscribestar.com/watherum", "Subscribe Star"));
+
     document.getElementById("body")
         .appendChild(createFooter(false));
 </script>

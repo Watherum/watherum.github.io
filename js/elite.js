@@ -5,7 +5,7 @@ function createPageHeader(bigText, smallText) {
     h1.setAttribute("class", "index-title");
     h1.innerHTML = bigText;
     var h5 = document.createElement("h5");
-    h5.setAttribute("class", "index-title");
+    h5.setAttribute("class", "white");
     h5.innerHTML = smallText;
     outerDiv.appendChild(h1);
     outerDiv.appendChild(h5);
@@ -14,7 +14,7 @@ function createPageHeader(bigText, smallText) {
 
 function createFooter(subDir) {
     var footer = document.createElement("footer");
-    footer.setAttribute("class","text-center width");
+    footer.setAttribute("class","center width");
 
     var cardDiv = document.createElement("div");
     cardDiv.setAttribute("class","footer-card white");
