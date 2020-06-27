@@ -9,7 +9,7 @@ body {
 }
 
 .background,body {
-	background-color: #360202 !important;
+	background-color: #a00000 !important;
 }
 
 .dark {
@@ -17,7 +17,7 @@ body {
 }
 
 .index-title {
-	color: orangered;
+	color: #c90000;
 }
 
 .nav-link {
@@ -49,7 +49,7 @@ nav {
 }
 
 .navbar-toggler-icon {
-	color: orangered !important;
+	color: #c80000 !important;
 }
 
 .jumbotron {
