@@ -103,19 +103,19 @@ function renderLounge () {
     var cx = this.visualizer.canvas.width / 2;
     var cy = this.visualizer.canvas.height / 2;
     var radius = 140;
-    var maxBarNum = Math.floor((radius * 1.5 * Math.PI) / (this.visualizer.barWidth + this.visualizer.barSpacing)) + 1;
-    var slicedPercent = Math.floor((maxBarNum) / 110);
+    var maxBarNum = Math.floor((radius * 2 * Math.PI) / (this.visualizer.barWidth + this.visualizer.barSpacing));
+    var slicedPercent = Math.floor((maxBarNum * 25) / 100);
     var barNum = maxBarNum - slicedPercent;
     var freqJump = Math.floor(this.visualizer.frequencyData.length / maxBarNum);
 
     for (var i = 0; i < barNum; i++) {
         var amplitude = this.visualizer.frequencyData[i * freqJump];
         var alfa = (i * 2 * Math.PI ) / maxBarNum;
-        var beta = (3 * 45 - this.visualizer.barWidth) * Math.PI / 132;
+        var beta = (3 * 45 - this.barWidth) * Math.PI / 180;
         var x = 0;
         var y = radius - (amplitude / 12 - this.visualizer.barHeight);
         var w = this.visualizer.barWidth;
-        var h = amplitude / 4.5 + this.visualizer.barHeight;
+        var h = amplitude / 6 + this.visualizer.barHeight;
 
         this.visualizer.canvasCtx.save();
         this.visualizer.canvasCtx.translate(cx + this.visualizer.barSpacing, cy + this.visualizer.barSpacing);

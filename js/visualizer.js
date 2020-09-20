@@ -1,331 +1,135 @@
-var AUDIO = AUDIO || {};
+var INTERVAL = null;
+var FFT_SIZE = 512;
+var TYPE = {
+    'lounge': 'renderLounge'
+};
+let visualizer = null;
 
-AUDIO.VISUALIZER = (function () {
-    'use strict';
+Visualizer = function  (cfg) {
+    this.isPlaying = false;
+    this.autoplay = cfg.autoplay || false;
+    this.loop = cfg.loop || false;
+    this.audio = document.getElementById(cfg.audio) || {};
+    this.canvas = document.getElementById(cfg.canvas) || {};
+    this.canvasCtx = this.canvas.getContext('2d') || null;
+    this.author = this.audio.getAttribute('data-author') || '';
+    this.title = this.audio.getAttribute('data-title') || '';
+    this.ctx = null;
+    this.analyser = null;
+    this.sourceNode = null;
+    this.frequencyData = [];
+    this.audioSrc = null;
+    this.duration = 0;
+    this.minutes = '00';
+    this.seconds = '00';
+    this.style = cfg.style || 'lounge';
+    this.barWidth = cfg.barWidth || 2;
+    this.barHeight = cfg.barHeight || 2;
+    this.barSpacing = cfg.barSpacing || 5;
+    this.barColor = cfg.barColor || '#ffffff';
+    this.shadowBlur = cfg.shadowBlur || 10;
+    this.shadowColor = cfg.shadowColor || '#ffffff';
+    this.font = cfg.font || ['12px', 'Helvetica'];
+    this.gradient = null;
+    this.stream = cfg.stream || null;
+    this.audioStream = null;
+    window.persistAudioStream = this.stream;
+}
 
-    var INTERVAL = null;
-    var FFT_SIZE = 512;
-    var TYPE = {
-        'lounge': 'renderLounge'
-    };
+setContextAndAnalyzer =  function(visualizer) {
+    try {
+        visualizer.ctx = new AudioContext();
+        visualizer.analyser = visualizer.ctx.createAnalyser();
+        visualizer.analyser.smoothingTimeConstant = 0.6;
+        visualizer.analyser.fftSize = FFT_SIZE;
 
-    /**
-     * @description
-     * Visualizer constructor.
-     *
-     * @param {Object} cfg
-     */
+        visualizer.audioStream = visualizer.ctx.createMediaStreamSource(visualizer.stream);
+        visualizer.audioStream.connect(visualizer.analyser);
 
-    function Visualizer (cfg) {
-        this.isPlaying = false;
-        this.autoplay = cfg.autoplay || false;
-        this.loop = cfg.loop || false;
-        this.audio = document.getElementById(cfg.audio) || {};
-        this.canvas = document.getElementById(cfg.canvas) || {};
-        this.canvasCtx = this.canvas.getContext('2d') || null;
-        this.author = this.audio.getAttribute('data-author') || '';
-        this.title = this.audio.getAttribute('data-title') || '';
-        this.ctx = null;
-        this.analyser = null;
-        this.sourceNode = null;
-        this.frequencyData = [];
-        this.audioSrc = null;
-        this.duration = 0;
-        this.minutes = '00';
-        this.seconds = '00';
-        this.style = cfg.style || 'lounge';
-        this.barWidth = cfg.barWidth || 2;
-        this.barHeight = cfg.barHeight || 2;
-        this.barSpacing = cfg.barSpacing || 5;
-        this.barColor = cfg.barColor || '#ffffff';
-        this.shadowBlur = cfg.shadowBlur || 10;
-        this.shadowColor = cfg.shadowColor || '#ffffff';
-        this.font = cfg.font || ['12px', 'Helvetica'];
-        this.gradient = null;
-        this.stream = cfg.stream || null;
-        this.audioStream = null;
-        window.persistAudioStream = this.stream;
+        return visualizer;
+    } catch (e) {
+        console.info('Web Audio API is not supported.', e);
     }
+}
 
-    Visualizer.prototype.setContextAndAnalyzer =  function() {
-        try {
-            this.ctx = new AudioContext();
-            this.audioStream = this.ctx.createMediaStreamSource( this.stream );
-            this.analyser = this.ctx.createAnalyser();
-            this.audioStream.connect(this.analyser);
-            this.analyser.smoothingTimeConstant = 0.6;
-            this.analyser.fftSize = FFT_SIZE;
-            return this;
-        } catch (e) {
-            console.info('Web Audio API is not supported.', e);
-        }
+setFrequencyData = function (visualizer) {
+    visualizer.frequencyData = new Uint8Array(visualizer.analyser.getByteFrequencyData());
+    console.log(visualizer.frequencyData);
+    return visualizer;
+};
+
+setCanvasStyles = function (visualizer) {
+    visualizer.gradient = visualizer.canvasCtx.createLinearGradient(0, 0, 0, 300);
+    visualizer.gradient.addColorStop(1, visualizer.barColor);
+    visualizer.canvasCtx.fillStyle = visualizer.gradient;
+    visualizer.canvasCtx.shadowBlur = visualizer.shadowBlur;
+    visualizer.canvasCtx.shadowColor = visualizer.shadowColor;
+    visualizer.canvasCtx.font = visualizer.font.join(' ');
+    visualizer.canvasCtx.textAlign = 'center';
+    return visualizer;
+};
+
+beginPlayback = function (visualizer) {
+    visualizer.canvasCtx.fillText('Loading...', visualizer.canvas.width / 2 + 10, visualizer.canvas.height / 2);
+    visualizer.isPlaying = true;
+    return visualizer;
+};
+
+function renderFrame () {
+    window.requestAnimationFrame(this.renderFrame.bind(this));
+    this.visualizer.analyser.getByteFrequencyData(this.visualizer.frequencyData);
+
+    this.visualizer.canvasCtx.clearRect(0, 0, this.visualizer.canvas.width, this.visualizer.canvas.height);
+
+    renderText();
+    renderLounge();
+}
+
+function renderText () {
+    var cx = this.visualizer.canvas.width / 2;
+    var cy = this.visualizer.canvas.height / 2;
+    this.visualizer.correction = 10;
+
+    this.visualizer.canvasCtx.textBaseline = 'top';
+    // this.canvasCtx.fillText('by ' + this.author, cx + correction, cy);
+    this.visualizer.canvasCtx.fillText( this.visualizer.author, cx + this.visualizer.correction, cy);
+    this.visualizer.canvasCtx.font = parseInt(this.visualizer.font[0], 10) + 8 + 'px ' + this.visualizer.font[1];
+    this.visualizer.canvasCtx.textBaseline = 'bottom';
+    this.visualizer.canvasCtx.fillText(this.visualizer.title, cx + this.visualizer.correction, cy);
+    this.visualizer.canvasCtx.font = this.visualizer.font.join(' ');
+};
+
+function renderLounge () {
+    var cx = this.visualizer.canvas.width / 2;
+    var cy = this.visualizer.canvas.height / 2;
+    var radius = 140;
+    var maxBarNum = Math.floor((radius * 2 * Math.PI) / (this.visualizer.barWidth + this.visualizer.barSpacing));
+    var slicedPercent = Math.floor((maxBarNum * 25) / 100);
+    var barNum = maxBarNum - slicedPercent;
+    var freqJump = Math.floor(this.visualizer.frequencyData.length / maxBarNum);
+
+    for (var i = 0; i < barNum; i++) {
+        var amplitude = this.visualizer.frequencyData[i * freqJump];
+        var alfa = (i * 2 * Math.PI ) / maxBarNum;
+        var beta = (3 * 45 - this.visualizer.barWidth) * Math.PI / 180;
+        var x = 0;
+        var y = radius - (amplitude / 12 - this.visualizer.barHeight);
+        var w = this.visualizer.barWidth;
+        var h = amplitude / 6 + this.visualizer.barHeight;
+
+        this.visualizer.canvasCtx.save();
+        this.visualizer.canvasCtx.translate(cx + this.visualizer.barSpacing, cy + this.visualizer.barSpacing);
+        this.visualizer.canvasCtx.rotate(alfa - beta);
+        this.visualizer.canvasCtx.fillRect(x, y, w, h);
+        this.visualizer.canvasCtx.restore();
     }
-
-    /**
-     * @description
-     * Set frequency data.
-     *
-     * @return {Object}
-     */
-    Visualizer.prototype.setFrequencyData = function () {
-        this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
-        return this;
-    };
-
-    /**
-     * @description
-     * Set current media source url.
-     *
-     * @return {Object}
-     */
-    Visualizer.prototype.setMediaSource = function () {
-        this.audioSrc = this.audio.getAttribute('src');
-        return this;
-    };
-
-    /**
-     * @description
-     * Set canvas gradient color.
-     *
-     * @return {Object}
-     */
-    Visualizer.prototype.setCanvasStyles = function () {
-        this.gradient = this.canvasCtx.createLinearGradient(0, 0, 0, 300);
-        this.gradient.addColorStop(1, this.barColor);
-        this.canvasCtx.fillStyle = this.gradient;
-        this.canvasCtx.shadowBlur = this.shadowBlur;
-        this.canvasCtx.shadowColor = this.shadowColor;
-        this.canvasCtx.font = this.font.join(' ');
-        this.canvasCtx.textAlign = 'center';
-        return this;
-    };
-
-    /**
-     * @description
-     * Bind click events.
-     *
-     * @return {Object}
-     */
-    Visualizer.prototype.beginPlayback = function () {
-        var _this = this;
-        this.canvasCtx.fillText('Loading...', this.canvas.width / 2 + 10, this.canvas.height / 2);
-        _this.playSound();
-        return this;
-    };
-
-    /**
-     * @description
-     * Play sound from the given buffer.
-     *
-     * @param  {Object} buffer
-     */
-    Visualizer.prototype.playSound = function (buffer) {
-        this.isPlaying = true;
-
-        if (this.ctx.state === 'suspended') {
-            return this.ctx.resume();
-        }
-
-        this.resetTimer();
-        this.startTimer();
-        this.renderFrame();
-    };
-
-    /**
-     * @description
-     * Pause current sound.
-     */
-    Visualizer.prototype.pauseSound = function () {
-        this.ctx.suspend();
-        this.isPlaying = false;
-    };
-
-    /**
-     * @description
-     * Start playing timer.
-     */
-    Visualizer.prototype.startTimer = function () {
-        var _this = this;
-        INTERVAL = setInterval(function () {
-            if (_this.isPlaying) {
-                var now = new Date(_this.duration);
-                var min = now.getHours();
-                var sec = now.getMinutes();
-                _this.minutes = (min < 10) ? '0' + min : min;
-                _this.seconds = (sec < 10) ? '0' + sec : sec;
-                _this.duration = now.setMinutes(sec + 1);
-            }
-        }, 1000);
-    };
-
-    /**
-     * @description
-     * Reset time counter.
-     */
-    Visualizer.prototype.resetTimer = function () {
-        var time =  new Date(0, 0);
-        this.duration = time.getTime();
-    };
-
-    /**
-     * @description
-     * On audio data stream error fn.
-     *
-     * @param  {Object} e
-     */
-    Visualizer.prototype.onError = function (e) {
-        console.info('Error decoding audio file. -- ', e);
-    };
-
-    /**
-     * @description
-     * Render frame on canvas.
-     */
-    Visualizer.prototype.renderFrame = function () {
-        requestAnimationFrame(this.renderFrame.bind(this));
-        this.analyser.getByteFrequencyData(this.frequencyData);
-
-        this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // this.renderTime();
-        this.renderText();
-        this.renderByStyleType();
-    };
-
-    /**
-     * @description
-     * Render audio author and title.
-     */
-    Visualizer.prototype.renderText = function () {
-        var cx = this.canvas.width / 2;
-        var cy = this.canvas.height / 2;
-        var correction = 10;
-
-        this.canvasCtx.textBaseline = 'top';
-        // this.canvasCtx.fillText('by ' + this.author, cx + correction, cy);
-        this.canvasCtx.fillText( this.author, cx + correction, cy);
-        this.canvasCtx.font = parseInt(this.font[0], 10) + 8 + 'px ' + this.font[1];
-        this.canvasCtx.textBaseline = 'bottom';
-        this.canvasCtx.fillText(this.title, cx + correction, cy);
-        this.canvasCtx.font = this.font.join(' ');
-    };
-
-    /**
-     * @description
-     * Render audio time.
-     */
-    Visualizer.prototype.renderTime = function () {
-        var time = this.minutes + ':' + this.seconds;
-        this.canvasCtx.fillText(time, this.canvas.width / 2 + 10, this.canvas.height / 2 + 40);
-    };
-
-    /**
-     * @description
-     * Render frame by style type.
-     *
-     * @return {Function}
-     */
-    Visualizer.prototype.renderByStyleType = function () {
-        return this[TYPE[this.style]]();
-    };
-
-    /**
-     * @description
-     * Render lounge style type.
-     */
-    Visualizer.prototype.renderLounge = function () {
-        var cx = this.canvas.width / 2;
-        var cy = this.canvas.height / 2;
-        var radius = 140;
-        var maxBarNum = Math.floor((radius * 2 * Math.PI) / (this.barWidth + this.barSpacing));
-        var slicedPercent = Math.floor((maxBarNum * 25) / 100);
-        var barNum = maxBarNum - slicedPercent;
-        var freqJump = Math.floor(this.frequencyData.length / maxBarNum);
-
-        for (var i = 0; i < barNum; i++) {
-            var amplitude = this.frequencyData[i * freqJump];
-            var alfa = (i * 2 * Math.PI ) / maxBarNum;
-            var beta = (3 * 45 - this.barWidth) * Math.PI / 180;
-            var x = 0;
-            var y = radius - (amplitude / 12 - this.barHeight);
-            var w = this.barWidth;
-            var h = amplitude / 6 + this.barHeight;
-
-            this.canvasCtx.save();
-            this.canvasCtx.translate(cx + this.barSpacing, cy + this.barSpacing);
-            this.canvasCtx.rotate(alfa - beta);
-            this.canvasCtx.fillRect(x, y, w, h);
-            this.canvasCtx.restore();
-        }
-    };
-
-    /**
-     * @description
-     * Create visualizer object instance.
-     *
-     * @param  {Object} cfg
-     * {
-     *     autoplay: <Bool>,
-     *     loop: <Bool>,
-     *     audio: <String>,
-     *     canvas: <String>,
-     *     style: <String>,
-     *     barWidth: <Integer>,
-     *     barHeight: <Integer>,
-     *     barSpacing: <Integer>,
-     *     barColor: <String>,
-     *     shadowBlur: <Integer>,
-     *     shadowColor: <String>,
-     *     font: <Array>
-     * }
-     * @return {Function}
-     * @private
-     */
-    function _createVisualizer (cfg) {
-        var visualizer = new Visualizer(cfg);
-
-        return function () {
-            visualizer
-                .setContextAndAnalyzer()
-                .setFrequencyData()
-                .setCanvasStyles()
-                .beginPlayback();
-
-            return visualizer;
-        };
-    }
-
-    /**
-     * @description
-     * Get visualizer instance.
-     *
-     * @param  {Object} cfg
-     * @return {Object}
-     * @public
-     */
-    function getInstance (cfg) {
-        return _createVisualizer(cfg)();
-    }
-
-    /**
-     * @description
-     * Visualizer module API.
-     *
-     * @public
-     */
-    return {
-        getInstance: getInstance
-    };
-})();
-
-
-var h = document.getElementsByTagName('h1')[0];
+};
 
 
 
 var soundAllowed = function (stream) {
 
-    var visualizer = AUDIO.VISUALIZER.getInstance({
+    var cfg = {
         autoplay: true,
         loop: true,
         audio: 'myAudio',
@@ -339,16 +143,44 @@ var soundAllowed = function (stream) {
         shadowColor: '#000000',
         font: ['24px', 'Teko'],
         stream: stream
-    });
+    }
+    this.visualizer = new Visualizer(cfg);
+    this.visualizer.ctx = new AudioContext();
+    this.visualizer.analyser = this.visualizer.ctx.createAnalyser();
+    this.visualizer.analyser.smoothingTimeConstant = 0.6;
+    this.visualizer.analyser.fftSize = FFT_SIZE;
 
-    return visualizer;
+    this.visualizer.audioStream = this.visualizer.ctx.createMediaStreamSource(this.visualizer.stream);
+    this.visualizer.audioStream.connect(this.visualizer.analyser);
+
+    this.visualizer.frequencyData = new Uint8Array(this.visualizer.analyser.frequencyBinCount);
+
+    this.visualizer.gradient = this.visualizer.canvasCtx.createLinearGradient(0, 0, 0, 300);
+    this.visualizer.gradient.addColorStop(1, this.visualizer.barColor);
+    this.visualizer.canvasCtx.fillStyle = this.visualizer.gradient;
+    this.visualizer.canvasCtx.shadowBlur = this.visualizer.shadowBlur;
+    this.visualizer.canvasCtx.shadowColor = this.visualizer.shadowColor;
+    this.visualizer.canvasCtx.font = this.visualizer.font.join(' ');
+    this.visualizer.canvasCtx.textAlign = 'center';
+
+    this.visualizer.canvasCtx.fillText('Loading...', this.visualizer.canvas.width / 2 + 10, this.visualizer.canvas.height / 2);
+    this.visualizer.isPlaying = true;
+
+    renderFrame();
+
+    return this.visualizer;
 };
 
 var soundNotAllowed = function (error) {
-    h.innerHTML = "You must allow your microphone.";
     console.log(error);
 }
 
-
-navigator.getUserMedia({audio:true}, soundAllowed, soundNotAllowed);
-
+try {
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function (stream) {
+        /* use the stream */
+        soundAllowed(stream);
+    });
+} catch(err) {
+    /* handle the error */
+    soundNotAllowed(err);
+}
