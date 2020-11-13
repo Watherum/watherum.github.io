@@ -27,7 +27,7 @@ function createFooter(subDir) {
     h4.innerHTML = "Business Contact";
 
     var h5 = document.createElement("h5");
-    h5.innerHTML = "business@watherum.com";
+    h5.innerHTML = "business@watherum.gg";
 
     var p = document.createElement("p");
     p.setAttribute("class","card-text");
