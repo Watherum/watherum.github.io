@@ -8,13 +8,13 @@ body {
 	flex: 1 0 auto;
 }
 
-#body {
-	background-image: url("../images/home/1920x4000.png");
-}
+/*#body {*/
+/*	background-image: url("../images/home/1920x4000.png");*/
+/*}*/
 
-#social-media-body {
-	background-image: url("../images/home/1920x4000.png");
-}
+/*#social-media-body {*/
+/*	background-image: url("../images/home/1920x4000.png");*/
+/*}*/
 
 .background,body {
 	background-color: #800000 !important;

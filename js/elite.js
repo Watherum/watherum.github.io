@@ -131,7 +131,7 @@ function createNavBar(subDir) {
     }
 
     var logoImg = document.createElement("img");
-    logoImg.setAttribute("src","images/logos/WA.jpg");
+    logoImg.setAttribute("src","images/logos/WA_Transparent.png");
     if (subDir) {
         logoImg.setAttribute("src","../images/logos/pfa_v1.jpg");
     }
