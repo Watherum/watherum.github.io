@@ -6,6 +6,8 @@ body {
 	flex-direction: column;
 	height: 100vh;
 	flex: 1 0 auto;
+	font-family: 'Teko', sans-serif;
+	font-size: x-large;
 }
 
 /*#body {*/
