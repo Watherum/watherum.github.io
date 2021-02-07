@@ -41,7 +41,7 @@ body {
 	color: red;
 }
 
-.card, .row {
+.card {
 	background-color: #18181b !important;
 }
 
@@ -49,7 +49,7 @@ body {
 	background-color: #18181b;
 }
 
-.footer-card, .row {
+.footer-card {
 	background-color: #0e0e10 !important;
 }
 
@@ -113,6 +113,7 @@ footer {
 	width: 80%;
 	height: auto;
 	text-align: center;
+	background-color: #18181b !important;
 }
 
 .discord-card-center {
@@ -120,12 +121,17 @@ footer {
 	margin: 0 auto;
 	width: 80%;
 	text-align: center;
+	background-color: #18181b !important;
 }
 
 .discord-preview-center {
 	margin: auto;
 	width: 95%;
 	text-align: center;
+}
+
+.twitch{
+	background-color: #18181b !important;
 }
 
 .center-media {
@@ -136,6 +142,11 @@ footer {
 
 .social-media-center{
 	padding-top: 5%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.schedule-center {
 	text-align: center;
 	margin: 0 auto;
 }
@@ -167,6 +178,16 @@ ol {
 	/*margin: 20px;*/
 	padding-left: 1.5%;
 	padding-right: 1.5%;
+}
+
+.card-img-top {
+	max-height: 180px;
+	max-width: 180px;
+}
+
+.card-body {
+	text-align: center;
+	margin: auto;
 }
 
 .card-text {
