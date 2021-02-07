@@ -41,7 +41,7 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body id="body">
+<body id="body" >
 <!-- MAIN CONTENT -->
 <script>
     document.getElementById("body")
@@ -51,7 +51,7 @@
         .appendChild(createPageHeader("The Official Page of Watherum", "Join the Ranks of the Elite"));
 </script>
 
-<div class="container">
+<div class="container mb-4">
 
 
     <div class="row my-3">
@@ -75,7 +75,8 @@
                         <br>
                         Below you'll find a preview of my Twitch page and an invite to the discord!
                         <br>
-                        The discord is my primary method of communication with everyone, and get suggestions, so be sure to join!
+                        The discord is my primary method of communication with everyone, and get suggestions, so be sure
+                        to join!
                     </p>
                 </div>
             </div>
@@ -83,39 +84,31 @@
     </div>
 
 
-
-        <div class="row my-3">
-            <div class="col">
-                <div class="twitch">
-                    <div class="twitch-video embed-responsive embed-responsive-16by9">
-                        <div id="twitch-embed" class="embed-responsive-item"></div>
-                    </div>
+    <div class="row my-3">
+        <div class="col">
+            <div class="twitch">
+                <div class="twitch-video embed-responsive embed-responsive-16by9">
+                    <div id="twitch-embed" class="embed-responsive-item"></div>
                 </div>
             </div>
         </div>
+    </div>
 
 
-
-        <div class="row my-3">
-            <div class="col">
-                <div class="discord-card-center">
-                    <iframe src="https://discord.com/widget?id=658845118215880743&theme=dark" width="350" height="500"
-                            allowtransparency="true" frameborder="0"
-                            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                            class="discord-preview-center"></iframe>
-                </div>
+    <div class="row my-3">
+        <div class="col">
+            <div class="discord-card-center">
+                <iframe src="https://discord.com/widget?id=658845118215880743&theme=dark" width="350" height="500"
+                        allowtransparency="true" frameborder="0"
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                        class="discord-preview-center"></iframe>
             </div>
         </div>
-
-
+    </div>
 
 
 </div>
 
-<script>
-    document.getElementById("body")
-        .appendChild(createFooter(false));
-</script>
 
 <script type="text/javascript">
     var embed = new Twitch.Embed("twitch-embed", {
@@ -131,6 +124,12 @@
         player.play();
     });
 </script>
+
+<script>
+    document.getElementById("body")
+        .appendChild(createFooter(false));
+</script>
+
 
 </body>
 </html>

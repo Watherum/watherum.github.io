@@ -10,6 +10,10 @@ body {
 	font-size: x-large;
 }
 
+#body {
+	position: relative; height: 100%;
+}
+
 /*#body {*/
 /*	background-image: url("../images/home/1920x4000.png");*/
 /*}*/
@@ -47,6 +51,12 @@ body {
 
 .content-background {
 	background-color: #18181b;
+}
+
+footer {
+	position: relative;
+	bottom: 0;
+	clear:both;
 }
 
 .footer-card {
@@ -181,6 +191,11 @@ ol {
 }
 
 .card-img-top {
+	max-height: 180px;
+	max-width: 180px;
+}
+
+.card-img {
 	max-height: 180px;
 	max-width: 180px;
 }
