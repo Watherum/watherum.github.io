@@ -40,32 +40,83 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body id="body">
+<body id="social-media-body">
 
 <script>
-    document.getElementById("body")
+    document.getElementById("social-media-body")
         .appendChild(createNavBar(false));
 
-    document.getElementById("body")
+    document.getElementById("social-media-body")
         .appendChild(createPageHeader("Support the Content & Streams!", "Thank you for your support!"));
+</script>
 
-    document.getElementById("body")
-        .appendChild(createScheduleItem("Twitch", "Subscribe, donate bits or gift subs",
-            "https://twitch.tv/Watherum", "Twitch"));
+<div class="social-media-center">
 
-    document.getElementById("body")
-        .appendChild(createScheduleItem("Paypal", "A direct one time donation of any amount",
-            "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FFXM2EFES9RY2&currency_code=USD&source=url", "Paypal"));
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <a href="https://twitch.tv/Watherum"> <img src="images/site_icons/Twitch_Wath.png"
+                                                           class="card-img" alt="twitch"> </a>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="https://twitch.tv/Watherum"> Twitch </a></h5>
+                    <p class="card-text">Subscribe, gift subs, or donate bits!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    document.getElementById("body")
-        .appendChild(createScheduleItem("Patreon", "Tiers are the same as Subscribe Star",
-            "https://www.patreon.com/watherum", "Patreon"));
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FFXM2EFES9RY2&currency_code=USD&source=url"> <img src="images/site_icons/Paypal_Wath.png"
+                                                           class="card-img" alt="paypal"> </a>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FFXM2EFES9RY2&currency_code=USD&source=url"> Paypal </a></h5>
+                    <p class="card-text">A direct donation of any amount!</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    document.getElementById("body")
-        .appendChild(createScheduleItem("Subscribe Star", "Tiers are the same as Patreon",
-            "https://www.subscribestar.com/watherum", "Subscribe Star"));
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <a href="https://www.patreon.com/watherum"> <img src="images/site_icons/Patreon_Wath.png"
+                                                                 class="card-img" alt="patreon"> </a>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="https://www.patreon.com/watherum"> Patreon </a></h5>
+                    <p class="card-text">Tiers are the same as Subscribe Star</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    document.getElementById("body")
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <a href="https://www.subscribestar.com/watherum"> <img src="images/site_icons/Sub_Star_Wath.png"
+                                                                 class="card-img" alt="subscribestar"> </a>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="https://www.subscribestar.com/watherum"> Subscribe Star </a></h5>
+                    <p class="card-text">Tiers are the same as Patreon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    document.getElementById("social-media-body")
         .appendChild(createFooter(false));
 </script>
 
