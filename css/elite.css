@@ -37,6 +37,9 @@ body {
 .white {
 	color: white;
 }
+.red {
+	color: red;
+}
 
 .card, .row {
 	background-color: #18181b !important;
@@ -100,6 +103,30 @@ footer {
 	 height: auto;
 	 text-align: center;
  }
+
+.container {
+	margin-bottom: 0.7%;
+}
+
+.about-me-center {
+	margin: 0 auto;
+	width: 80%;
+	height: auto;
+	text-align: center;
+}
+
+.discord-card-center {
+	padding: 3%;
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+}
+
+.discord-preview-center {
+	margin: auto;
+	width: 95%;
+	text-align: center;
+}
 
 .center-media {
 	text-align: center;
