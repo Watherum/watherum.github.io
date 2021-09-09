@@ -31,7 +31,7 @@ function createFooter(subDir) {
 
     var p = document.createElement("p");
     p.setAttribute("class","card-text");
-    p.innerHTML = "Copyright &#169; 2021 Watherum Elite, All Rights Reserved";
+    p.innerHTML = "Copyright &#169; 2021 Watherum, All Rights Reserved";
 
     footer.appendChild(cardDiv);
     cardDiv.appendChild(subDiv);
